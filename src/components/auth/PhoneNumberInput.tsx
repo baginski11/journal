@@ -31,7 +31,7 @@ export default function PhoneNumberInput() {
     );
 }
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
 
 const PhoneInput = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, ...props }, ref) => {
