@@ -37,8 +37,6 @@ export async function createAccount(email: string, password: string, firstName: 
         }
     })
     if(register.error && !register.data.user) {
-        console.log('autherror')
-        console.log(register.error)
         return null
     }
     const dbuser = await client.from('users').insert({
@@ -49,13 +47,9 @@ export async function createAccount(email: string, password: string, firstName: 
         userId: register.data.user?.id
     }).single()
     if(dbuser.error) {
-        console.log('dberror')
-
-        console.log(dbuser.error)
         await client.auth.admin.deleteUser(register.data.user!.id)
         return null
     }
-    console.log('success')
     return dbuser.data;
 
 }
@@ -68,4 +62,9 @@ export async function signInWithPassword(email: string, password: string) {
         email: email,
         password: password
     })
+    if(error) {
+        return null
+    }
+
+    return data.user
 }

@@ -37,7 +37,7 @@ const PhoneInput = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, ...props }, ref) => {
         return (
             <Input
-                className="-ml-px rounded-l-none shadow-none focus-visible:z-10"
+                className={`-ml-px rounded-l-none shadow-none focus-visible:z-10 ${className}`}
                 ref={ref}
                 {...props}
             />

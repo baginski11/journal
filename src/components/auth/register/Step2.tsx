@@ -36,7 +36,7 @@ export default function Step2() {
     return(
         <div className='flex flex-col gap-12 m-8'>
             <div className='flex flex-col sm:gap-3 gap-2'>
-                <Label className='font-semibold sm:text-sm md:text-xl'>Let's get to know eachother</Label>
+                <Label className='font-semibold sm:text-sm md:text-xl'>Let{'&apos'}s get to know eachother</Label>
                 <Label className='text-muted-foreground font-medium sm:text-xs md:text-md lg:text-base '>We will need a little more information about you.</Label>
             </div>
 
