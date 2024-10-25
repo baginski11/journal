@@ -5,7 +5,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChevronDown, Phone } from "lucide-react";
-import React, { useState } from "react";
+import React from "react";
 import * as RPNInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 import {useAuth} from "@/contexts/AuthContext";

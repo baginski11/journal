@@ -7,7 +7,7 @@ import {useEffect, useMemo, useState} from "react";
 import {useAuth} from "@/contexts/AuthContext";
 
 export default function PasswordInput() {
-    const { setPassword: setContextPassword, isEligible, setIsEligible} = useAuth();
+    const { setPassword: setContextPassword, setIsEligible} = useAuth();
     const [password, setPassword] = useState("");
     const [isVisible, setIsVisible] = useState<boolean>(false);
 

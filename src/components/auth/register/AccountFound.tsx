@@ -1,6 +1,6 @@
 "use client"
 import {Label} from "@/components/ui/label";
-import {ChevronRight, Mail} from "lucide-react";
+import {ChevronRight} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import PasswordInputOnLogin from "@/components/auth/PasswordInputOnLogin";
 import {useAuth} from "@/contexts/AuthContext";
