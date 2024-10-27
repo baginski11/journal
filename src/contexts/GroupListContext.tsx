@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext, useState, PropsWithChildren } from 'react'
-import { Group, Organization } from '@/lib/types'
+import { Group } from '@/lib/types'
 
 interface GroupListContextType {
   groups: Group[]
