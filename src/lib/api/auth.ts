@@ -72,6 +72,7 @@ export const signInWithPassword = async (email: string, password: string) => {
     email: email,
     password: password,
   })
+  console.log(error)
 
   if (error) {
     return null
@@ -89,4 +90,9 @@ export const getAuthUser = async (): Promise<AuthUser | null> => {
   }
 
   return data.user
+}
+
+export const signOut = async () => {
+  const client = await createClient()
+  await client.auth.signOut()
 }

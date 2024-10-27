@@ -2,10 +2,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Eye, EyeOff } from 'lucide-react'
 import { useState } from 'react'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function PasswordInputOnLogin() {
   const [isVisible, setIsVisible] = useState<boolean>(false)
-  const [password, setPassword] = useState<string>('')
+  const { password, setPassword } = useAuth()
 
   return (
     <div className="space-y-2">

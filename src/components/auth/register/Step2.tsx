@@ -10,6 +10,7 @@ import { useSwipeBack } from '@/hooks/auth/useSwipeBack'
 import { createAccount } from '@/lib/api/auth'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
+import { useKeyboardEvent } from '@/hooks/useKeyboardEvent'
 
 export default function Step2() {
   const {
@@ -63,11 +64,13 @@ export default function Step2() {
     }
   }
 
+  useKeyboardEvent('keydown', 'Enter', onSubmit)
+
   return (
     <div className="m-8 flex flex-col gap-12">
       <div className="flex flex-col gap-2 sm:gap-3">
         <Label className="font-semibold sm:text-sm md:text-xl">
-          Let{'&apos'}s get to know eachother
+          Let{"'"}s get to know eachother
         </Label>
         <Label className="md:text-md font-medium text-muted-foreground sm:text-xs lg:text-base">
           We will need a little more information about you.

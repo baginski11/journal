@@ -8,6 +8,7 @@ import { useSwipeBack } from '@/hooks/auth/useSwipeBack'
 import { signInWithPassword } from '@/lib/api/auth'
 import { useRouter } from 'next/navigation'
 import { useToast } from '@/hooks/use-toast'
+import { useKeyboardEvent } from '@/hooks/useKeyboardEvent'
 
 export default function AccountFound() {
   const { firstName, setAuthStep, email, password, setPassword } = useAuth()
@@ -34,6 +35,8 @@ export default function AccountFound() {
       setPassword('')
     }
   }
+
+  useKeyboardEvent('keydown', 'Enter', onContinue)
 
   return (
     <div className="m-8 flex flex-col gap-12">

@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { findUserByEmail } from '@/lib/api/auth'
+import { useKeyboardEvent } from '@/hooks/useKeyboardEvent'
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -31,6 +32,8 @@ export default function Step1() {
       setAuthStep(2)
     }
   }
+
+  useKeyboardEvent('keydown', 'Enter', onSubmit)
 
   return (
     <div className="m-8 flex flex-col gap-12">
