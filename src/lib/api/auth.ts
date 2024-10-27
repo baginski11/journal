@@ -11,6 +11,7 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
     .select('*')
     .eq('email', email)
     .single()
+
   if (error) {
     return null
   } else {
@@ -54,10 +55,13 @@ export const createAccount = async (
     })
     .select()
     .single()
+
   if (dbuser.error) {
     await client.auth.admin.deleteUser(register.data.user!.id)
+
     return null
   }
+
   return dbuser.data
 }
 
@@ -68,6 +72,7 @@ export const signInWithPassword = async (email: string, password: string) => {
     email: email,
     password: password,
   })
+
   if (error) {
     return null
   }
@@ -78,8 +83,10 @@ export const signInWithPassword = async (email: string, password: string) => {
 export const getAuthUser = async (): Promise<AuthUser | null> => {
   const client = await createClient()
   const { data, error } = await client.auth.getUser()
+
   if (error) {
     return null
   }
+
   return data.user
 }

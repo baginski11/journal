@@ -26,13 +26,16 @@ export default function Step2() {
   } = useAuth()
   const router = useRouter()
   const { toast } = useToast()
+
   const onSwipeBack = () => {
     setAuthStep(1)
   }
+
   useSwipeBack({ onSwipeBack })
 
   const onSubmit = async () => {
     setIsEligible(false)
+
     if (
       phoneNumber.length > 8 &&
       firstName.length > 1 &&
@@ -46,6 +49,7 @@ export default function Step2() {
         lastName,
         phoneNumber
       )
+
       if (!res) {
         setIsEligible(true)
         toast({

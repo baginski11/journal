@@ -10,8 +10,10 @@ export const getUser = async (userId: string): Promise<User | null> => {
     .select('*')
     .eq('userId', userId)
     .single()
+
   if (error) {
     return null
   }
+
   return user as User
 }

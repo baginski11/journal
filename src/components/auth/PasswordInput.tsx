@@ -38,6 +38,7 @@ export default function PasswordInput() {
     if (score <= 1) return 'bg-red-500'
     if (score <= 2) return 'bg-orange-500'
     if (score === 3) return 'bg-amber-500'
+
     return 'bg-emerald-500'
   }
 
@@ -45,11 +46,13 @@ export default function PasswordInput() {
     if (score === 0) return 'Enter a password'
     if (score <= 2) return 'Weak password'
     if (score === 3) return 'Medium password'
+
     return 'Strong password'
   }
 
   useEffect(() => {
     setContextPassword(password)
+
     if (strengthScore > 3) {
       setIsEligible(true)
     } else {

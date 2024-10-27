@@ -7,6 +7,7 @@ import AccountFound from '@/components/auth/register/AccountFound'
 
 export default function Page() {
   const { authStep } = useAuth()
+
   return (
     <div className="flex h-dvh w-dvw flex-col items-center justify-center gap-4">
       {authStep === 1 && <Step1 />}

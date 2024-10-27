@@ -17,10 +17,12 @@ export default function AccountFound() {
   const onSwipeBack = () => {
     setAuthStep(1)
   }
+
   useSwipeBack({ onSwipeBack })
 
   const onContinue = async () => {
     const res = await signInWithPassword(email, password)
+
     if (res) {
       router.push('/app')
     } else {

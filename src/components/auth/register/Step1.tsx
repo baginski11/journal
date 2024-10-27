@@ -12,14 +12,18 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 export default function Step1() {
   const { setEmail, email, setAuthStep, setFirstName } = useAuth()
   const [error, setError] = useState<string | null>(null)
+
   const onSubmit = async () => {
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address')
+
       return
     }
+
     setError(null)
 
     const user = await findUserByEmail(email)
+
     if (user) {
       setFirstName(user.firstName)
       setAuthStep(3)
@@ -27,6 +31,7 @@ export default function Step1() {
       setAuthStep(2)
     }
   }
+
   return (
     <div className="m-8 flex flex-col gap-12">
       <div className="flex flex-col gap-2 sm:gap-3">

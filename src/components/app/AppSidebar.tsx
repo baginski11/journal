@@ -1,5 +1,5 @@
 'use client'
-import { Calendar, Home, Inbox, Search, Settings, User } from 'lucide-react'
+import { Calendar, Home, User } from 'lucide-react'
 
 import {
   Sidebar,
@@ -26,6 +26,7 @@ export function AppSidebar() {
     if (open && hoverOpen) {
       setOpen(false)
     }
+
     if (!open && hoverOpen) {
       setOpen(true)
     }
