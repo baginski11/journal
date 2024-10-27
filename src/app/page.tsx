@@ -1,9 +1,7 @@
-"use client"
+'use client'
 
 export default function Home() {
   return (
-      <div className='w-dvw h-dvh flex items-center justify-center flex-col gap-4'>
-
-      </div>
-  );
+    <div className="flex h-dvh w-dvw flex-col items-center justify-center gap-4"></div>
+  )
 }
