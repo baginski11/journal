@@ -9,8 +9,8 @@ interface OrganizationContextType {
 }
 
 // Create the context with default values
-const OrganizationContext = createContext<OrganizationContextType | undefined>(
-  undefined
+const OrganizationContext = createContext<OrganizationContextType>(
+  {} as OrganizationContextType
 )
 
 // Create the provider component

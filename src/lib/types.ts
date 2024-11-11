@@ -13,6 +13,20 @@ export interface Organization {
   createdAt: string
   orgName: string
   orgOwnerId: string
+  settings: {
+    extensions: Extension[]
+  }
+}
+
+export interface Extension {
+  name: string
+  tokenId: string
+  enabled: boolean
+  options: ExtensionGroupOption[]
+}
+export interface ExtensionGroupOption {
+  groupId: string
+  enabled: boolean
 }
 
 export interface Group {

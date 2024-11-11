@@ -7,8 +7,8 @@ interface GroupListContextType {
   addGroup: (group: Group) => void
 }
 
-const GroupListContext = createContext<GroupListContextType | undefined>(
-  undefined
+const GroupListContext = createContext<GroupListContextType>(
+  [] as GroupListContextType
 )
 
 export const GroupListContextProvider = ({

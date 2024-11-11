@@ -9,9 +9,9 @@ interface OrganizationListContextType {
 }
 
 // Create the context with default values
-const OrganizationListContext = createContext<
-  OrganizationListContextType | undefined
->(undefined)
+const OrganizationListContext = createContext<OrganizationListContextType>(
+  [] as OrganizationListContextType
+)
 
 // Create the provider component
 export const OrganizationListContextProvider = ({
