@@ -17,7 +17,7 @@ export const getOrganizationGroups = async (orgId: string) => {
   return data as Group[]
 }
 
-export const getGroupDetails = async (groupId: string) => {
+export const getGroupDetails = async (groupId: string): Promise<Group | null> => {
   const client = await createClient()
 
   const { data, error } = await client
@@ -33,16 +33,19 @@ export const getGroupDetails = async (groupId: string) => {
   return data as Group
 }
 
-export const createGroup = async (group: Group) => {
+export const createGroup = async (groupName: string, groupOrgId: string): Promise<Group | null> => {
   const client = await createClient()
 
-  const { data, error } = await client.from('groups').insert([group]).single()
+  const { data, error } = await client.from('groups').insert({
+    groupName: groupName,
+    groupOrgId: groupOrgId,
+  }).select().single()
 
   if (error) {
     return null
   }
 
-  return data as Group
+  return data as unknown as Group
 }
 
 export const updateGroup = async (group: Group) => {

@@ -13,6 +13,7 @@ export interface Organization {
   createdAt: string
   orgName: string
   orgOwnerId: string
+  orgLogoURL: string
 }
 
 export interface Group {
@@ -29,4 +30,22 @@ export interface DummyUser {
   dummyLastName: string
   dummyOrgId: string
   dummyGroupsIds: string[]
+}
+
+export interface Meeting {
+  meetingId: string
+  groupId: string
+  orgId: string
+  meetingDate: string
+  meetingName: string
+}
+
+export interface Record {
+  recordId: string
+  meetingId: string
+  dummyUserId: string
+  orgId: string
+  groupId: string
+  value: string
+  createdAt: string
 }

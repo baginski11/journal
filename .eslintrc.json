@@ -2,7 +2,7 @@
   "extends": [
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "rules": {
     "padding-line-between-statements": [
@@ -15,6 +15,7 @@
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_" }
-    ]
+    ],
+    "quotes": ["error", "double"]
   }
 }

@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useState, PropsWithChildren } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { Organization } from '@/lib/types'
 
 // Define the shape of the auth context state
@@ -9,12 +9,12 @@ interface OrganizationContextType {
 }
 
 // Create the context with default values
-const OrganizationContext = createContext<OrganizationContextType | undefined>(
-  undefined
+const OrganizationContext = createContext<OrganizationContextType>(
+  {} as OrganizationContextType
 )
 
 // Create the provider component
-export const OrganiztionContextProvider = ({
+export const OrganizationContextProvider = ({
   children,
   organization: organizationProps,
 }: PropsWithChildren<Omit<OrganizationContextType, 'setOrganization'>>) => {

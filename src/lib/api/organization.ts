@@ -39,20 +39,31 @@ export const getOrganizationDetails = async (
 }
 
 export const createOrganization = async (
-  org: Organization
+  orgName: string,
+  orgLogoURL: string
 ): Promise<Organization | null> => {
   const client = await createClient()
 
+  const { data: owner } = await client.auth.getUser()
+
+  if (!owner.user) {
+    return null
+  }
+
   const { data, error } = await client
     .from('organizations')
-    .insert([org])
-    .single()
+    .insert({
+      orgName: orgName,
+      orgOwnerId: owner.user.id,
+      orgLogoURL: orgLogoURL,
+    })
+    .select().single()
 
   if (error) {
     return null
   }
 
-  return data as Organization
+  return data as unknown as Organization
 }
 
 export const updateOrganization = async (

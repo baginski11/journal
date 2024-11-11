@@ -1,7 +1,12 @@
-'use client'
+import { getAuthUser } from "@/lib/api/auth"
+import { redirect } from "next/navigation"
 
-export default function Home() {
-  return (
-    <div className="flex h-dvh w-dvw flex-col items-center justify-center gap-4"></div>
-  )
+export default async function Home() {
+  const authUser = await getAuthUser()
+
+  if (!authUser) {
+    return redirect("/auth")
+  } else {
+    return redirect("/app")
+  }
 }

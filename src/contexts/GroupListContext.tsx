@@ -1,6 +1,15 @@
-'use client'
-import { createContext, useContext, useState, PropsWithChildren } from 'react'
-import { Group } from '@/lib/types'
+"use client"
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+import { Group } from "@/lib/types"
+import { useOrganization } from "./OrganizationContext"
+import { getOrganizationGroups } from "@/lib/api/groups"
 
 interface GroupListContextType {
   groups: Group[]
@@ -11,15 +20,23 @@ const GroupListContext = createContext<GroupListContextType | undefined>(
   undefined
 )
 
-export const GroupListContextProvider = ({
-  children,
-  groups: groupsProps,
-}: PropsWithChildren<Omit<GroupListContextType, 'addGroup'>>) => {
-  const [groups, setGroups] = useState<Group[]>(groupsProps)
+export const GroupListContextProvider = ({ children }: PropsWithChildren) => {
+  const [groups, setGroups] = useState<Group[]>([])
+  const { organization } = useOrganization()
+  const hasFetched = useRef(false)
 
   const addGroup = (group: Group) => {
     setGroups((prevGroups) => [...prevGroups, group])
   }
+
+  useEffect(() => {
+    if (organization) {
+      getOrganizationGroups(organization.orgId).then((groups) => {
+        setGroups(groups)
+        hasFetched.current = true
+      })
+    }
+  }, [organization])
 
   return (
     <GroupListContext.Provider
@@ -38,7 +55,7 @@ export const useGroupList = () => {
 
   if (context === undefined) {
     throw new Error(
-      'useGroupList must be used within an GroupListContextProvider'
+      "useGroupList must be used within an GroupListContextProvider"
     )
   }
 
